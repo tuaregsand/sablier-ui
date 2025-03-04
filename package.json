@@ -1,6 +1,6 @@
 {
   "name": "sablier-ui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A comprehensive UI kit with reusable components, utilities, and consistent styling patterns",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -10,46 +10,36 @@
   ],
   "scripts": {
     "build": "rollup -c",
-    "typecheck": "tsc --noEmit",
-    "lint": "eslint . --ext .ts,.tsx",
+    "dev": "rollup -c -w",
     "prepublishOnly": "npm run build"
   },
-  "keywords": [
-    "ui",
-    "components",
-    "react",
-    "tailwind",
-    "design-system"
-  ],
-  "author": "tuareg.sand",
-  "license": "MIT",
   "peerDependencies": {
-    "class-variance-authority": ">=0.7.0",
-    "clsx": ">=2.0.0",
-    "framer-motion": ">=6.0.0",
-    "react": ">=17.0.0",
-    "react-dom": ">=17.0.0",
-    "tailwind-merge": ">=2.0.0",
-    "tailwindcss": ">=3.0.0"
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0"
+  },
+  "dependencies": {
+    "clsx": "^1.2.1",
+    "lucide-react": "^0.303.0",
+    "tailwind-merge": "^1.14.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^11.1.5",
     "@types/react": "^18.2.37",
-    "@types/react-dom": "^18.2.15",
-    "class-variance-authority": "^0.7.0",
-    "clsx": "^2.0.0",
-    "eslint": "^8.53.0",
-    "framer-motion": "^10.16.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "rollup": "^4.3.0",
-    "rollup-plugin-dts": "^6.1.0",
-    "tailwind-merge": "^2.0.0",
-    "tailwindcss": "^3.3.5",
+    "rollup": "^4.6.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
     "typescript": "^5.2.2"
   },
+  "keywords": [
+    "react",
+    "ui",
+    "components",
+    "tailwind",
+    "design-system"
+  ],
+  "author": "tuareg.sand",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tuaregsand/sablier-ui.git"
@@ -57,8 +47,5 @@
   "bugs": {
     "url": "https://github.com/tuaregsand/sablier-ui/issues"
   },
-  "homepage": "https://github.com/tuaregsand/sablier-ui#readme",
-  "dependencies": {
-    "lucide-react": "^0.477.0"
-  }
+  "homepage": "https://github.com/tuaregsand/sablier-ui#readme"
 }
