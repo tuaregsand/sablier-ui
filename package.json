@@ -52,10 +52,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/your-username/sablier-ui.git"
+    "url": "git+https://github.com/tuaregsand/sablier-ui.git"
   },
   "bugs": {
-    "url": "https://github.com/your-username/sablier-ui/issues"
+    "url": "https://github.com/tuaregsand/sablier-ui/issues"
   },
-  "homepage": "https://github.com/your-username/sablier-ui#readme"
+  "homepage": "https://github.com/tuaregsand/sablier-ui#readme"
 } 
