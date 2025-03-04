@@ -24,13 +24,13 @@
   "author": "tuareg.sand",
   "license": "MIT",
   "peerDependencies": {
-    "react": ">=17.0.0",
-    "react-dom": ">=17.0.0",
-    "framer-motion": ">=6.0.0",
-    "tailwindcss": ">=3.0.0",
     "class-variance-authority": ">=0.7.0",
     "clsx": ">=2.0.0",
-    "tailwind-merge": ">=2.0.0"
+    "framer-motion": ">=6.0.0",
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0",
+    "tailwind-merge": ">=2.0.0",
+    "tailwindcss": ">=3.0.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.7",
@@ -38,17 +38,17 @@
     "@rollup/plugin-typescript": "^11.1.5",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
     "eslint": "^8.53.0",
     "framer-motion": "^10.16.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rollup": "^4.3.0",
     "rollup-plugin-dts": "^6.1.0",
+    "tailwind-merge": "^2.0.0",
     "tailwindcss": "^3.3.5",
-    "typescript": "^5.2.2",
-    "class-variance-authority": "^0.7.0",
-    "clsx": "^2.0.0",
-    "tailwind-merge": "^2.0.0"
+    "typescript": "^5.2.2"
   },
   "repository": {
     "type": "git",
@@ -57,5 +57,8 @@
   "bugs": {
     "url": "https://github.com/tuaregsand/sablier-ui/issues"
   },
-  "homepage": "https://github.com/tuaregsand/sablier-ui#readme"
-} 
+  "homepage": "https://github.com/tuaregsand/sablier-ui#readme",
+  "dependencies": {
+    "lucide-react": "^0.477.0"
+  }
+}

@@ -1,24 +1,32 @@
-# World Simulation UI Kit
+# Sablier UI 
 
-A comprehensive UI kit for the World Simulation frontend application, providing reusable components, utilities, and consistent styling patterns.
+A comprehensive UI kit with reusable components, utilities, and consistent styling patterns for React applications.
 
-## Table of Contents
+[![npm version](https://img.shields.io/npm/v/sablier-ui.svg)](https://www.npmjs.com/package/sablier-ui)
+[![license](https://img.shields.io/npm/l/sablier-ui.svg)](https://github.com/tuaregsand/sablier-ui/blob/main/LICENSE)
 
-- [Getting Started](#getting-started)
-- [Core Concepts](#core-concepts)
-- [Components](#components)
-- [Theme System](#theme-system)
-- [Typography](#typography)
-- [Grid System](#grid-system)
-- [Animations](#animations)
-- [Custom Hooks](#custom-hooks)
+## Installation
 
-## Getting Started
+```bash
+npm install sablier-ui
+```
 
-To use the UI Kit in your components, import the needed parts from the UI Kit:
+## Requirements
 
-```tsx
-import { Typography, Grid, GridItem, useTheme } from '@/lib/ui-kit';
+Sablier UI has the following peer dependencies:
+
+- React 17.0.0+
+- React DOM 17.0.0+
+- Framer Motion 6.0.0+
+- Tailwind CSS 3.0.0+
+- class-variance-authority 0.7.0+
+- clsx 2.0.0+
+- tailwind-merge 2.0.0+
+
+## Quick Start
+
+```jsx
+import { Grid, GridItem, Typography, useTheme } from 'sablier-ui';
 
 function MyComponent() {
   const theme = useTheme();
@@ -29,228 +37,307 @@ function MyComponent() {
         <Typography variant="h2">Hello World</Typography>
       </GridItem>
       <GridItem>
-        <Typography variant="body1">This is using our UI Kit</Typography>
+        <Typography variant="body1">This is using Sablier UI Kit</Typography>
       </GridItem>
     </Grid>
   );
 }
 ```
 
-## Core Concepts
+## Component Documentation
 
-The UI Kit is built on the following core principles:
+### Grid System
 
-1. **Consistency**: Use consistent styling, spacing, and components across the application
-2. **Reusability**: Components are designed to be reused in multiple contexts
-3. **Flexibility**: Components are configurable while maintaining design consistency
-4. **Type Safety**: All components have TypeScript definitions for better developer experience
-5. **Theme Aware**: Components use theme variables for consistent styling
+The grid system provides a flexible way to create layouts in your application.
 
-## Components
+#### GridContainer
 
-The UI Kit includes a comprehensive catalog of all available components. You can find the catalog in `component-catalog.ts`.
+Provides a container with optional max-width and padding.
 
-Components are organized into the following categories:
-
-- **Layout**: Components for structuring the page layout
-- **Feedback**: Components for providing feedback to users
-- **Navigation**: Components for navigating between pages and sections
-- **Input**: Components for user input
-- **Data Display**: Components for displaying data
-- **Typography**: Components for text formatting
-- **Overlay**: Components that appear over other content
-- **World Components**: Components specific to the world simulation
-- **Avatar Components**: Components for avatar-related features
-
-To see all available components, you can use the helper functions provided in the catalog:
-
-```tsx
-import { 
-  getComponentsByCategory, 
-  ComponentCategory 
-} from '@/lib/ui-kit';
-
-// Get all layout components
-const layoutComponents = getComponentsByCategory(ComponentCategory.LAYOUT);
+```jsx
+<GridContainer maxWidth="lg" padding="md" centered>
+  {/* Your content here */}
+</GridContainer>
 ```
 
-## Theme System
+Props:
+- `fullWidth`: boolean - Whether the container should take full width
+- `maxWidth`: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full' - Maximum width of the container
+- `padding`: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' - Padding inside the container
+- `centered`: boolean - Whether to center the container
 
-The UI Kit includes a theme system that provides consistent colors, spacing, and styling across the application.
+#### Grid
 
-The theme is defined in `theme.ts` and follows the design tokens from the application's global CSS variables.
+Creates a grid layout with configurable columns and gaps.
 
-You can access the theme using the `useTheme` hook:
+```jsx
+<Grid columns={3} gap="md" responsive>
+  {/* Grid items here */}
+</Grid>
+```
 
-```tsx
-import { useTheme } from '@/lib/ui-kit';
+Props:
+- `columns`: 1 | 2 | 3 | 4 | 5 | 6 | 12 - Number of columns
+- `gap`: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' - Gap between grid items
+- `rowGap`: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' - Gap between rows
+- `columnGap`: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' - Gap between columns
+- `autoRows`: boolean - Whether to use auto-sized rows
+- `autoColumns`: boolean - Whether to use auto-sized columns
+- `responsive`: boolean - Whether the grid should be responsive
+
+#### GridItem
+
+An item within a Grid that can span multiple columns.
+
+```jsx
+<GridItem span={2} spanMd={4} spanLg={6}>
+  {/* Content here */}
+</GridItem>
+```
+
+Props:
+- `span`, `spanSm`, `spanMd`, `spanLg`, `spanXl`: 1-12 - Number of columns to span
+- `start`, `startSm`, `startMd`, `startLg`, `startXl`: 1-12 - Starting column
+- `order`: number - Order of the item
+
+#### FlexContainer
+
+A container that uses flexbox for layout.
+
+```jsx
+<FlexContainer direction="column" align="center" justify="between" gap="md">
+  {/* Content here */}
+</FlexContainer>
+```
+
+Props:
+- `direction`: 'row' | 'row-reverse' | 'column' | 'column-reverse'
+- `wrap`: 'nowrap' | 'wrap' | 'wrap-reverse'
+- `justify`: 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly'
+- `align`: 'start' | 'end' | 'center' | 'baseline' | 'stretch'
+- `gap`: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+- `inline`: boolean - Whether to use inline-flex
+
+#### Spacer
+
+Creates empty space between elements.
+
+```jsx
+<Spacer size="md" axis="vertical" />
+```
+
+Props:
+- `size`: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | number
+- `axis`: 'horizontal' | 'vertical' | 'both'
+- `grow`: boolean - Whether the spacer should grow to fill available space
+
+### Typography
+
+A system for consistent text styling across your application.
+
+#### Typography
+
+The main component for rendering text with various styles.
+
+```jsx
+<Typography variant="h1" weight="bold" align="center">
+  Hello World
+</Typography>
+```
+
+Props:
+- `variant`: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'subtitle1' | 'subtitle2' | 'body1' | 'body2' | 'caption' | 'overline' | 'code'
+- `weight`: 'light' | 'normal' | 'medium' | 'semibold' | 'bold'
+- `align`: 'left' | 'center' | 'right' | 'justify'
+- `transform`: 'none' | 'capitalize' | 'uppercase' | 'lowercase'
+- `muted`: boolean - Whether the text should appear muted
+- `truncate`: boolean - Whether to truncate overflow with ellipsis
+- `as`: React.ElementType - HTML element to render as
+- `gutterBottom`: boolean - Whether to add margin at the bottom
+
+#### Convenience Components
+
+Sablier UI provides convenience components for common typography variants:
+
+```jsx
+<Heading1>This is a heading</Heading1>
+<Body1>This is body text</Body1>
+<Caption>This is a caption</Caption>
+```
+
+Available components:
+- `Heading1`, `Heading2`, `Heading3`, `Heading4`, `Heading5`, `Heading6`
+- `Subtitle1`, `Subtitle2`
+- `Body1`, `Body2`
+- `Caption`, `Overline`, `Code`
+
+#### Text Formatting
+
+Components for text formatting:
+
+```jsx
+<Bold>Bold text</Bold>
+<Italic>Italic text</Italic>
+<Underline>Underlined text</Underline>
+<Highlight>Highlighted text</Highlight>
+<KeyboardKey>Ctrl</KeyboardKey>
+<InlineCode>const x = 1;</InlineCode>
+```
+
+#### TextBlock
+
+A component for blocks of text with spacing between paragraphs.
+
+```jsx
+<TextBlock spacing="md">
+  <p>First paragraph</p>
+  <p>Second paragraph</p>
+</TextBlock>
+```
+
+Props:
+- `spacing`: 'none' | 'sm' | 'md' | 'lg' - Spacing between paragraphs
+
+### Theme
+
+The theming system allows for consistent styling across components.
+
+#### useTheme Hook
+
+```jsx
+import { useTheme } from 'sablier-ui';
 
 function MyComponent() {
   const theme = useTheme();
   
-  // Access theme values
-  const backgroundColor = theme.color.background;
-  const spacing = theme.spacing.md;
-  
   return (
-    <div style={{ backgroundColor, padding: spacing }}>
-      Theme-aware component
+    <div style={{ color: theme.colors.primary }}>
+      Themed content
     </div>
   );
 }
 ```
 
-For accessing nested theme properties, you can use the `getThemeValue` helper:
+### Utilities
 
-```tsx
-import { getThemeValue, useTheme } from '@/lib/ui-kit';
+#### cn
 
-function MyComponent() {
-  const theme = useTheme();
-  
-  // Get a nested theme value
-  const sidebarBackground = getThemeValue(theme, 'color.sidebar.background');
-  
+A utility function for conditional class merging.
+
+```jsx
+import { cn } from 'sablier-ui';
+
+const className = cn(
+  'base-class',
+  isActive && 'active-class',
+  size === 'large' && 'large-class'
+);
+```
+
+### Navigation Components
+
+#### TubelightNavbar
+
+A beautiful navigation bar with a "tubelight" hover effect that's perfect for modern applications.
+
+```jsx
+import { TubelightNavbar } from 'sablier-ui';
+import { Home, Settings, User } from 'lucide-react'; // or any icon library
+
+const navItems = [
+  { name: "Home", url: "/", icon: Home },
+  { name: "Profile", url: "/profile", icon: User },
+  { name: "Settings", url: "/settings", icon: Settings },
+];
+
+function MyNavigation() {
   return (
-    <div style={{ backgroundColor: sidebarBackground }}>
-      Sidebar component
-    </div>
+    <TubelightNavbar items={navItems} />
   );
 }
 ```
 
-## Typography
+Props:
+- `items`: Array of navigation items with `name`, `url`, and `icon` properties
+- `className`: Optional CSS class for styling
 
-The Typography system provides consistent text styling across the application. It includes components for headings, body text, captions, and more.
+#### BentoGrid and BentoCard
 
-```tsx
-import { 
-  Typography, 
-  Heading1, 
-  Body1, 
-  TextBlock,
-  Bold, 
-  Italic 
-} from '@/lib/ui-kit';
+A modern "bento box" grid layout with expandable cards, perfect for feature showcases or dashboards.
 
-function MyComponent() {
+```jsx
+import { BentoGrid, BentoCard } from 'sablier-ui';
+import { Sparkles, Zap, Globe } from 'lucide-react'; // or any icon library
+
+function MyBentoGrid() {
   return (
-    <TextBlock spacing="md">
-      <Heading1>Page Title</Heading1>
-      <Body1>
-        This is a paragraph with <Bold>bold</Bold> and <Italic>italic</Italic> text.
-      </Body1>
-    </TextBlock>
-  );
-}
-```
-
-The Typography component supports various options:
-
-- **variant**: Text style variant (h1-h6, body1, body2, etc.)
-- **weight**: Font weight (light, normal, medium, semibold, bold)
-- **align**: Text alignment (left, center, right, justify)
-- **transform**: Text transformation (uppercase, lowercase, capitalize)
-- **muted**: Makes the text color less prominent
-- **truncate**: Truncates text with ellipsis if it overflows
-- **as**: HTML element to render (overrides the default element for the variant)
-- **gutterBottom**: Adds bottom margin for spacing between text elements
-
-## Grid System
-
-The Grid system provides flexible and responsive layouts. It includes components for grid containers, grid items, and flex containers.
-
-```tsx
-import { Grid, GridItem, GridContainer, Flex } from '@/lib/ui-kit';
-
-function MyComponent() {
-  return (
-    <GridContainer maxWidth="lg" padding="md">
-      <Grid columns={3} gap="md" responsive>
-        <GridItem span={1}>Column 1</GridItem>
-        <GridItem span={1}>Column 2</GridItem>
-        <GridItem span={1}>Column 3</GridItem>
-      </Grid>
+    <BentoGrid columns={3} gap="md">
+      <BentoCard
+        name="Feature One"
+        description="This is an amazing feature with multiple capabilities and benefits."
+        Icon={Sparkles}
+        cta="Learn More"
+        className="md:col-span-2"
+        content={{
+          intro: "Detailed information about Feature One.",
+          details: [
+            {
+              title: "Overview",
+              content: "Feature One lets you accomplish tasks efficiently."
+            },
+            {
+              title: "Benefits",
+              content: "Save time, increase productivity, and simplify your workflow."
+            }
+          ],
+          metrics: "Used by 87% of our customers with 95% satisfaction."
+        }}
+      />
       
-      <Flex direction="row" justify="between" align="center">
-        <div>Left content</div>
-        <div>Right content</div>
-      </Flex>
-    </GridContainer>
-  );
-}
-```
-
-The Grid components support various options for creating flexible layouts, including responsive behavior, grid spans, and spacing.
-
-## Animations
-
-The UI Kit includes animation utilities for creating consistent animations across the application. These are based on Framer Motion but provide pre-configured animation variants.
-
-```tsx
-import { motion } from 'framer-motion';
-import { fadeInVariants, transitions } from '@/lib/ui-kit';
-
-function MyComponent() {
-  return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={fadeInVariants('up')}
-      transition={transitions.medium}
-    >
-      This will fade in from below
-    </motion.div>
-  );
-}
-```
-
-The animation utilities include:
-
-- Pre-configured animation variants (fade, scale, slide, etc.)
-- Common transition presets (fast, medium, slow, etc.)
-- Helper functions for creating custom animations
-
-## Custom Hooks
-
-The UI Kit includes several custom hooks for common UI patterns:
-
-- **useOutsideClick**: Detect clicks outside of an element
-- **useEscapeKey**: Detect when the escape key is pressed
-- **useLocalStorage**: Store and retrieve data from localStorage with type safety
-- **useScrollPosition**: Track scroll position
-- **useIntersectionObserver**: Detect when an element is in the viewport
-- **useWindowSize**: Track window dimensions
-- **useDebounce**: Debounce a function call
-- **useDebounceValue**: Debounce a value change
-- **useMediaQuery**: Check if a media query matches
-- **useHover**: Track when an element is hovered
-- **useMousePosition**: Track mouse position
-- **useElementSize**: Track element dimensions
-
-Example usage:
-
-```tsx
-import { useOutsideClick, useLocalStorage } from '@/lib/ui-kit';
-
-function MyComponent() {
-  // Close dropdown when clicking outside
-  const [ref, isActive, setIsActive] = useOutsideClick<HTMLDivElement>(() => {
-    setIsActive(false);
-  });
-  
-  // Store user preferences in localStorage
-  const [theme, setTheme] = useLocalStorage<'light' | 'dark'>('theme', 'light');
-  
-  return (
-    <div ref={ref}>
-      <button onClick={() => setIsActive(!isActive)}>Toggle Dropdown</button>
-      {isActive && <div className="dropdown">Dropdown content</div>}
+      <BentoCard
+        name="Feature Two"
+        description="Another great feature that enhances your experience."
+        Icon={Zap}
+        cta="Explore"
+      />
       
-      <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
-        Toggle Theme ({theme})
-      </button>
-    </div>
+      <BentoCard
+        name="Feature Three"
+        description="Third feature with global capabilities."
+        Icon={Globe}
+        cta="Discover"
+      />
+    </BentoGrid>
   );
 }
-``` 
+```
+
+BentoGrid Props:
+- `columns`: 1 | 2 | 3 | 4 | 6 - Number of columns in the grid
+- `gap`: 'xs' | 'sm' | 'md' | 'lg' | 'xl' - Gap between grid items
+- `className`: Optional CSS class for styling
+
+BentoCard Props:
+- `name`: Title of the card
+- `description`: Description text
+- `Icon`: React component for the icon
+- `cta`: Call-to-action text
+- `className`: Optional CSS class for styling (use 'md:col-span-2' for wider cards)
+- `background`: Optional React node for custom background
+- `content`: Optional detailed content object for the expanded view with `intro`, `details`, and `metrics` properties
+
+## Creating a Full Documentation Site
+
+For more comprehensive documentation, consider creating a documentation site using one of these tools:
+
+1. **Storybook**: Create interactive examples of your components
+2. **Docusaurus**: Build a full documentation site
+3. **Next.js**: Create a custom documentation site with MDX
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+MIT © [Sablier UI](https://github.com/tuaregsand/sablier-ui) 
