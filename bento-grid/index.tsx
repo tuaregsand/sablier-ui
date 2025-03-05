@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { cn } from "./utils";
+import { cn } from "../utils";
 
 export interface BentoGridProps {
   className?: string;
@@ -44,6 +44,4 @@ export function BentoGrid({
       {children}
     </div>
   );
-}
-
-export { BentoCard } from "./bento-card"; 
+} 

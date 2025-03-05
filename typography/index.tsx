@@ -1,6 +1,6 @@
 // Typography system for the UI Kit
 import React from 'react';
-import { cn } from './utils';
+import { cn } from '../utils';
 
 // Types
 export type TextVariant = 
@@ -250,7 +250,7 @@ export const KeyboardKey = ({ children, className, ...props }: React.HTMLAttribu
 export const InlineCode = ({ children, className, ...props }: React.HTMLAttributes<HTMLElement>) => (
   <code 
     className={cn(
-      'px-1.5 py-0.5 text-sm font-mono bg-muted rounded border border-border',
+      'px-1.5 py-0.5 text-sm font-mono bg-muted border border-border rounded',
       className
     )} 
     {...props}

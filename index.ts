@@ -29,4 +29,4 @@ export * from './bento-grid';
 export * from './bento-card';
 
 // Export UI Kit version
-export const UI_KIT_VERSION = '1.0.0'; 
+export const UI_KIT_VERSION = '1.0.3'; 

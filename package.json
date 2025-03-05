@@ -1,6 +1,6 @@
 {
   "name": "sablier-ui",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A comprehensive UI kit with reusable components, utilities, and consistent styling patterns",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -11,7 +11,9 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",
@@ -19,6 +21,7 @@
   },
   "dependencies": {
     "clsx": "^1.2.1",
+    "framer-motion": "^10.16.4",
     "lucide-react": "^0.303.0",
     "tailwind-merge": "^1.14.0"
   },
@@ -26,9 +29,16 @@
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^11.1.5",
+    "@storybook/addon-essentials": "^7.6.7",
+    "@storybook/addon-interactions": "^7.6.7",
+    "@storybook/addon-onboarding": "^1.0.10",
+    "@storybook/react-vite": "^7.6.7",
     "@types/react": "^18.2.37",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
     "rollup": "^4.6.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
+    "tailwindcss": "^3.3.6",
     "typescript": "^5.2.2"
   },
   "keywords": [

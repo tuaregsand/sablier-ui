@@ -4,7 +4,7 @@ import typescript from '@rollup/plugin-typescript';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 
 export default {
-  input: 'index.tsx',
+  input: 'index.ts',
   output: [
     {
       file: 'dist/index.js',
@@ -27,5 +27,5 @@ export default {
       declarationDir: 'dist',
     }),
   ],
-  external: ['react', 'react-dom', 'lucide-react'],
+  external: ['react', 'react-dom', 'lucide-react', 'framer-motion'],
 }; 

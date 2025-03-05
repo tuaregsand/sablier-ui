@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
-import { cn } from "./utils";
+import { cn } from "../utils";
 
 export interface BentoCardProps {
   name: string;
